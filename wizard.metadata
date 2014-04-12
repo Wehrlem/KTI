@@ -14,7 +14,7 @@ S'# Welcome to my new app'
 p7
 sS'page_error'
 p8
-S'# Error: the document does not exist'
+S'# Error: the document does not exists'
 p9
 sS'params'
 p10
