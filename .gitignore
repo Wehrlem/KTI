@@ -1,4 +1,3 @@
 *.class
 *.pyc
 *.pyo
-models/db.py
