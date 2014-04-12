@@ -1,0 +1,85 @@
+<script type="text/javascript"><!--
+    // These variables are used by the web2py_ajax_init function in web2py_ajax.js (which is loaded below).
+    var w2p_ajax_confirm_message = "{{=T('Are you sure you want to delete this object?')}}";
+    var w2p_ajax_disable_with_message = "{{=T('Working...')}}";
+    var w2p_ajax_date_format = "{{=T('%Y-%m-%d')}}";
+    var w2p_ajax_datetime_format = "{{=T('%Y-%m-%d %H:%M:%S')}}";
+    var ajax_error_500 = '{{=T.M('An error occured, please [[reload %s]] the page') % URL(args=request.args, vars=request.get_vars) }}'
+    //--></script>
+    <script>
+    var App = {};
+    </script>
+    <script data-id="App.Scripts">
+    App.Scripts = {
+        /* CORE scripts always load first; */
+        core: [
+            "{{=URL('static','components/library/jquery/jquery.min.js')}}",
+            "{{=URL('static','components/library/modernizr/modernizr.js')}}",
+        ],
+        /* PLUGINS_DEPENDENCY always load after CORE but before PLUGINS; */
+        plugins_dependency: [
+            "{{=URL('static','components/library/bootstrap/js/bootstrap.min.js')}}",
+            "{{=URL('static','components/library/jquery/jquery-migrate.min.js')}}",
+            "{{=URL('static','components/modules/admin/maps/vector/assets/lib/jquery-jvectormap-1.2.2.min.js')}}",
+            "{{=URL('static','components/modules/admin/charts/flot/assets/lib/jquery.flot.js')}}",
+        ],
+        /* PLUGINS always load after CORE and PLUGINS_DEPENDENCY, but before the BUNDLE / initialization scripts; */
+        plugins: [
+            "{{=URL('static','components/plugins/nicescroll/jquery.nicescroll.min.js')}}",
+            "{{=URL('static','components/plugins/breakpoints/breakpoints.js')}}",
+            "{{=URL('static','components/plugins/ajaxify/davis.min.js')}}",
+            "{{=URL('static','components/plugins/ajaxify/jquery.lazyjaxdavis.min.js')}}",
+            "{{=URL('static','components/plugins/preload/pace/pace.min.js')}}",
+           // "{{=URL('static','components/modules/admin/charts/flot/assets/lib/jquery.flot.resize.js')}}",
+            //"{{=URL('static','components/modules/admin/charts/flot/assets/lib/plugins/jquery.flot.tooltip.min.js')}}",
+            //"{{=URL('static','components/modules/admin/charts/flot/assets/custom/js/flotcharts.common.js')}}",
+            "{{=URL('static','components/modules/admin/charts/easy-pie/assets/lib/js/jquery.easy-pie-chart.js')}}",
+            "{{=URL('static','components/modules/admin/maps/vector/assets/lib/maps/jquery-jvectormap-world-mill-en.js')}}",
+            "{{=URL('static','components/plugins/less-js/less.min.js')}}",
+            "{{=URL('static','components/modules/admin/charts/flot/assets/lib/excanvas.js')}}",
+            "{{=URL('static','components/plugins/browser/ie/ie.prototype.polyfill.js')}}"
+        ],
+        /* The initialization scripts always load last and are automatically and dynamically loaded when AJAX navigation is enabled; */
+        bundle: [
+        	"{{=URL('static','components/plugins/ajaxify/ajaxify.init.js')}}",
+        	"{{=URL('static','components/plugins/preload/pace/preload.pace.init.js')}}",
+        	"{{=URL('static','components/core/js/animations.init.js')}}",
+        	"{{=URL('static','components/modules/admin/charts/flot/assets/custom/js/flotchart-line-2.init.js')}}",
+        	"{{=URL('static','components/modules/admin/charts/flot/assets/custom/js/flotchart-mixed-1.init.js')}}",
+        	"{{=URL('static','components/modules/admin/charts/flot/assets/custom/js/flotchart-bars-horizontal.init.js')}}",
+        	"{{=URL('static','components/modules/admin/charts/easy-pie/assets/custom/easy-pie.init.js')}}",
+        	"{{=URL('static','components/modules/admin/charts/sparkline/sparkline.init.js')}}",
+        	"{{=URL('static','components/modules/admin/maps/vector/assets/custom/maps-vector.world-map-markers.init.js')}}",
+        	"{{=URL('static','components/core/js/sidebar.main.init.js')}}",
+        	"{{=URL('static','components/core/js/sidebar.discover.init.js')}}",
+        	"{{=URL('static','components/core/js/core.init.js')}}"
+        ]
+    };
+    </script>
+    <script>
+    $script(App.Scripts.core, 'core');
+    $script.ready(['core'], function()
+    {
+        $script(App.Scripts.plugins_dependency, 'plugins_dependency');
+    });
+    $script.ready(['core', 'plugins_dependency'], function()
+    {
+        $script(App.Scripts.plugins, 'plugins');
+    });
+    $script.ready(['core', 'plugins_dependency', 'plugins'], function()
+    {
+        $script(App.Scripts.bundle, 'bundle');
+    });
+    </script>
+    <script>
+    if ( /*@cc_on!@*/ false && document.documentMode === 10)
+    {
+        document.documentElement.className += ' ie ie10';
+    }
+    </script>
+{{
+response.files.insert(0,URL('static','js/jquery.js'))
+response.files.insert(3,URL('static','js/web2py.js'))
+response.include_meta()
+response.include_files()
+}}
