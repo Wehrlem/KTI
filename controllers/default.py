@@ -9,6 +9,8 @@ def index():
 def twitter():
     session.counter=(session.counter or 0) + 1
     return dict(counter=session.counter)
+def settings():
+    return dict()
 def first():
     form = SQLFORM.factory(Field('visitor_name',label='what is your name?',requires=IS_NOT_EMPTY()))
     if form.process().accepted:
