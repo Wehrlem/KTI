@@ -1,13 +1,10 @@
 (function($)
 {
-
 	window.animations = true;
-
 	window.animateElements = function()
 	{
 		// restore visibility
 		$("#menu, .navbar.main, #footer").css('visibility', 'visible').show();
-
 		// disable animations on touch devices
 		if (Modernizr.touch)
 			return;

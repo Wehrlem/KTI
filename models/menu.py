@@ -5,5 +5,5 @@ response.meta.keywords = settings.keywords
 response.meta.description = settings.description
 response.menu = [
 (T('Home'),URL('default','index')==URL(),URL('default','index'),[]),
-(T('Twitter'),URL('default','twitter')==URL(),URL('default','twitter'),[])
+(T('Seetings'),URL('default','settings')==URL(),URL('default','settings'),[])
 ]

@@ -1,7 +1,15 @@
 {{extend 'layout.html'}}
-
 <div class="row">
-	<div class="col-md-8">
+	
+	<div class="col-md-12">
+		<div class="row">
+	
+		<div class="tab-pane" id="bewertung_content"></div></div></div>
+	  <div class="col-md-8">
+
+		<script type="text/javascript">
+		var graph = "{{=URL('static','data/graph_home.json')}}"
+		</script>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="widget innerAll text-center">
